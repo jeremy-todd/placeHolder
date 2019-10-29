@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PlaceHolderService } from './services/place-holder.service';
+import { ITodo } from './interfaces/itodo';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'placeHolder';
+  todos: ITodo[];
+  constructor(PlaceHolderService: PlaceHolderService) {
+    PlaceHolderService.getList().subscribe(data => this.todos = data);
+  }
 }
